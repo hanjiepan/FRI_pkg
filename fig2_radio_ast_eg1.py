@@ -301,7 +301,7 @@ if __name__ == '__main__':
     if save_fig:
         file_name_spec = (r'./result/TSP_intro_K_{0}_L_{1}_noise_{2}dB_spectrum.' +
                           fig_format).format(repr(K), repr(L), repr(P))
-        plt.savefig(file_name_spec, format=fig_format, dpi=300, transparent=False)
+        plt.savefig(file_name_spec, format=fig_format, dpi=300, transparent=True)
 
     # --------------------------------------------------------------------------
 
@@ -330,7 +330,7 @@ if __name__ == '__main__':
                                r'noise_{2}dB_dirty_img_{3}by{4}.' +
                                fig_format).format(repr(K), repr(L), repr(P),
                                                   repr(num_pixel_y), repr(num_pixel_x))
-        plt.savefig(file_name_dirty_img, format=fig_format, dpi=300, transparent=False)
+        plt.savefig(file_name_dirty_img, format=fig_format, dpi=300, transparent=True)
 
     # ==========================================================================
 
@@ -368,7 +368,7 @@ if __name__ == '__main__':
         file_name_aggregated = (r'./result/TSP_intro_K_{0}_L_{1}_' +
                                 r'noise_{2}dB_aggregated.' +
                                 fig_format).format(repr(K), repr(L), repr(P))
-        plt.savefig(file_name_aggregated, format=fig_format, dpi=300, transparent=False)
+        plt.savefig(file_name_aggregated, format=fig_format, dpi=300, transparent=True)
 
     # --------------------------------------------------------------------------
 
@@ -409,7 +409,7 @@ if __name__ == '__main__':
         file_name_aggregated_zoom = ('./result/TSP_intro_K_{0}_L_{1}_' +
                                      'noise_{2}dB_aggregated_zoom.' +
                                      fig_format).format(repr(K), repr(L), repr(P))
-        plt.savefig(file_name_aggregated_zoom, format=fig_format, dpi=300, transparent=False)
+        plt.savefig(file_name_aggregated_zoom, format=fig_format, dpi=300, transparent=True)
 
     # --------------------------------------------------------------------------
 
@@ -442,7 +442,7 @@ if __name__ == '__main__':
                                     '{2}dB_dirty_img_{3}by{4}_zoom.' +
                                     fig_format).format(repr(K), repr(L), repr(P),
                                                        repr(num_pixel_y), repr(num_pixel_x))
-        plt.savefig(file_name_dirty_img_zoom, format=fig_format, dpi=300, transparent=False)
+        plt.savefig(file_name_dirty_img_zoom, format=fig_format, dpi=300, transparent=True)
     plt.show()
 
     # --------------------------------------

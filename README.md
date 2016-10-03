@@ -123,10 +123,10 @@ We demonstrate how Diracs are reconstructed from non-uniformly sampled time
 domain measurements.
 
 * the noiseless case:  
-    <img src="./result/TSP_eg1_K_5_L_11_noise_infdB20-12_02_22.png" height="185">
+    <img src="./html/TSP_eg1_K_5_L_11_noise_infdB20-12_02_22.png" height="185">
 
 * the noisy case:  
-    <img src="./result/TSP_eg1_K_5_L_81_noise_5dB20-12_02_22.png" height="185">
+    <img src="./html/TSP_eg1_K_5_L_81_noise_5dB20-12_02_22.png" height="185">
 
 ### Dirac reconstruction from Fourier domain samples (Fig. 7 and Fig. 8)
 
@@ -135,31 +135,31 @@ We consider both cases where the spectrum is periodic and aperiodic.
 The difference is whether we have an exact mapping from a set of unknown uniform samples of sinusoids to the given non-uniformly sampled measurements.
 
 * In the case with periodic spectrum, the linear mapping is exact.  
-    <img src="./result/TSP_eg2_K_5_L_21_M_21_noise_infdB_dirichlet_periodic.png" height="320">
+    <img src="./html/TSP_eg2_K_5_L_21_M_21_noise_infdB_dirichlet_periodic.png" height="320">
 
 * While in the case with aperiodic spectrum, we use interpolation to approximate the linear mapping.  
-    <img src="./result/TSP_eg2_K_5_L_42_M_21_noise_infdB_triangular_aperiodic.png" height="320">
-    <img src="./result/TSP_eg2_K_5_L_105_M_21_noise_5dB_triangular_aperiodic.png" height="320">
+    <img src="./html/TSP_eg2_K_5_L_42_M_21_noise_infdB_triangular_aperiodic.png" height="320">
+    <img src="./html/TSP_eg2_K_5_L_105_M_21_noise_5dB_triangular_aperiodic.png" height="320">
 
 ### FRI curve reconstruction (Fig. 9 and Fig. 10)
 
 We demonstrate the flexibilities of the proposed algorithmic framework in 
 choosing a formulation that is more suitable for a given FRi reconstruction problem.  
-<img src="./result/avg_perf_plot_K_3_L_3.png" height="250">
+<img src="./html/avg_perf_plot_K_3_L_3.png" height="250">
 
 Visiual comparison for (SNR = 5dB)  
 <table>
   <tr>
-    <td align="center"><img src="./result/TSP_eg3_K_3_L_3_noise_5dB_samples.png" height="200"></td>
-    <td align="center"><img src="./result/TSP_eg3_K_3_L_3_noise_5dB_cadzow.png" height="200"></td>
+    <td align="center"><img src="./html/TSP_eg3_K_3_L_3_noise_5dB_samples.png" height="200"></td>
+    <td align="center"><img src="./html/TSP_eg3_K_3_L_3_noise_5dB_cadzow.png" height="200"></td>
   </tr>
   <tr>
     <td align="center">(a) Noisy Samples</td>
     <td align="center">(b) Cadzow's Method</td>
   </tr>
   <tr>
-  <td align="center"><img src="./result/TSP_eg3_K_3_L_3_noise_5dB_slra.png" height="200"></td>
-    <td align="center"><img src="./result/TSP_eg3_K_3_L_3_noise_5dB_proposed.png" height="200"></td>
+  <td align="center"><img src="./html/TSP_eg3_K_3_L_3_noise_5dB_slra.png" height="200"></td>
+    <td align="center"><img src="./html/TSP_eg3_K_3_L_3_noise_5dB_proposed.png" height="200"></td>
   </tr>
   <tr>
     <td align="center">(c) Structured Low-rank Approximation</td>
@@ -181,16 +181,16 @@ algorithm on reconstructing point sources in radioastronomy.
           <col width="240">
       </colgroup>
       <tr>
-        <td align="center"><img src="./result/TSP_intro_K_3_L_8000_noise_5dB_dirty_img_515by515.png" height="200"></td>
-        <td align="center"><img src="./result/TSP_intro_K_3_L_8000_noise_5dB_aggregated.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_intro_K_3_L_8000_noise_5dB_dirty_img_515by515.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_intro_K_3_L_8000_noise_5dB_aggregated.png" height="200"></td>
       </tr>
       <tr>
         <td align="center">(a) Inverse Fourier Transform of the Raw Measurements</td>
         <td align="center">(b) <i>Statistics</i> of Retrieved Sources using FRI</td>
       </tr>
       <tr>
-        <td align="center"><img src="./result/TSP_intro_K_3_L_8000_noise_5dB_dirty_img_515by515_zoom.png" height="200"></td>
-        <td align="center"><img src="./result/TSP_intro_K_3_L_8000_noise_5dB_aggregated_zoom.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_intro_K_3_L_8000_noise_5dB_dirty_img_515by515_zoom.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_intro_K_3_L_8000_noise_5dB_aggregated_zoom.png" height="200"></td>
       </tr>
       <tr>
         <td align="center">(c) Zoom-in of (a)</td>
@@ -206,17 +206,17 @@ algorithm on reconstructing point sources in radioastronomy.
           <col width="240">
       </colgroup>
       <tr>
-        <td align="center"><img src="./result/TSP_eg4_K_5_L_8500_noise_5dB_spectrum_noisy.png" height="200"></td>
-        <td align="center"><img src="./result/TSP_eg4_K_5_L_8500_noise_5dB_dirty_img_515by515.png" height="200"></td>
-        <td align="center"><img src="./result/TSP_eg4_K_5_L_8500_noise_5dB_ell1_recon_515by515.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_eg4_K_5_L_8500_noise_5dB_spectrum_noisy.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_eg4_K_5_L_8500_noise_5dB_dirty_img_515by515.png" height="200"></td>
+        <td align="center"><img src="./html/TSP_eg4_K_5_L_8500_noise_5dB_ell1_recon_515by515.png" height="200"></td>
       </tr>
       <tr>
         <td colspan="2" align="center">(a) The Given Measurements</td>
         <td align="center">(b) &#8467;<sub>1</sub> Minimization Result</td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><img src="./result/TSP_eg4_K_5_L_8500_noise_5dB_locations.png" height="163"></td>
-        <td align="center"><img src="./result/TSP_intro_K_5_L_8500_noise_5dB_aggregated.png" height="200"></td>
+        <td colspan="2" align="center"><img src="./html/TSP_eg4_K_5_L_8500_noise_5dB_locations.png" height="163"></td>
+        <td align="center"><img src="./html/TSP_intro_K_5_L_8500_noise_5dB_aggregated.png" height="200"></td>
       </tr>
       <tr>
         <td colspan="2" align="center">(c) <i>Continuous</i> Domain Reconstruction (FRI)</td>

@@ -58,8 +58,9 @@ if __name__ == '__main__':
     Lhalf = np.int(np.ceil(L / 2.))
 
     '''
-    rand_num1 = (np.random.rand(Lhalf) + np.random.rand(Lhalf) + np.random.rand(Lhalf)) / 3.
-    rand_num2 = (np.random.rand(Lhalf) + np.random.rand(Lhalf) + np.random.rand(Lhalf)) / 3.
+    prng = RandomState()
+    rand_num1 = (prng.rand(Lhalf) + prng.rand(Lhalf) + prng.rand(Lhalf)) / 3.
+    rand_num2 = (prng.rand(Lhalf) + prng.rand(Lhalf) + prng.rand(Lhalf)) / 3.
     omega_ell_x_half = np.pi * (rand_num1 * (2 * M) - M)
     omega_ell_y_half = np.pi * (rand_num2 * (2 * N) - N)
     omega_ell_x = np.concatenate((omega_ell_x_half, -omega_ell_x_half))
@@ -70,7 +71,7 @@ if __name__ == '__main__':
     file_name = r'./data/Dirac_Data_' + time_stamp + r'.npz'
     np.savez(file_name, xk=xk, yk=yk, alpha_k=alpha_k, K=K,
              omega_ell_x=omega_ell_x, omega_ell_y=omega_ell_y,
-             time_stamp=time_stamp)
+             prng=np.array(prng), time_stamp=time_stamp)
     '''
 
     # load saved data
@@ -82,6 +83,7 @@ if __name__ == '__main__':
     K = stored_param['K'].tolist()
     omega_ell_x = stored_param['omega_ell_x']
     omega_ell_y = stored_param['omega_ell_y']
+    prng = stored_param['prng'].tolist()
 
     print(r'time stamp: ' + time_stamp +
           '\n=======================================\n')
@@ -97,7 +99,7 @@ if __name__ == '__main__':
     # the added noise is Hermitian symmetric because the noise is added
     # to EM waves at each antenna. The Fourier transform is obtained via
     # cross-correlation. Hence, it will also be Hermitian symmetric.
-    noise_half = np.random.randn(Lhalf) + 1j * np.random.randn(Lhalf)
+    noise_half = prng.randn(Lhalf) + 1j * prng.randn(Lhalf)
     noise = np.concatenate((noise_half, np.conj(noise_half)))
     noise = noise / linalg.norm(noise) * linalg.norm(Ihat_omega_ell) * 10 ** (-P / 20.)
     Ihat_omega_ell_noisy = Ihat_omega_ell + noise

@@ -239,8 +239,8 @@ List of standard packages needed
     numpy, scipy, matplotlib, mkl, joblib
 
 
-Systems Tested
---------------
+System Tested
+-------------
 
 ### macOS
 

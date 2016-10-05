@@ -158,7 +158,6 @@ if __name__ == '__main__':
         file_name = (r'./result/TSP_eg3_K_{0}_L_{1}_' +
                      r'noise_{2}dB_samples.' + fig_format).format(repr(K), repr(L), repr(P))
         plt.savefig(file_name, format=fig_format, dpi=300, transparent=True)
-    plt.show()
 
     # Cadzow denoising result
     file_name = (r'./result/TSP_eg3_K_{0}_L_{1}_' +
@@ -183,6 +182,7 @@ if __name__ == '__main__':
         plt_recon_fri_curve(coef_recon, coef, tau_x, tau_y,
                             plt_size, save_fig, file_name, nargout=4,
                             file_format=fig_format)
+    plt.show()
 
     if web_fig:
         output_file('./html/eg3.html')

@@ -86,8 +86,8 @@ def roots2(coef, plt_sz, tau_x, tau_y):
     :return:
     """
     L, K = coef.shape
-    l_limit = np.floor(L / 2.)
-    k_limit = np.floor(K / 2.)
+    l_limit = np.int(np.floor(L / 2.))
+    k_limit = np.int(np.floor(K / 2.))
 
     x_grid = np.linspace(0, tau_x, num=plt_sz[1], endpoint=False, dtype=float)
     y_grid = np.linspace(0, tau_y, num=plt_sz[0], endpoint=False, dtype=float)
@@ -137,7 +137,7 @@ def roots2(coef, plt_sz, tau_x, tau_y):
     curve_plt = np.zeros(np.int(plt_sz[0] * plt_sz[1]))
     curve_plt[(cords_normalise[:, 0] * plt_sz[0] +
                cords_normalise[:, 1]).astype(int)] = 1
-    curve_plt = np.reshape(curve_plt, tuple(plt_sz), order='F')
+    curve_plt = np.reshape(curve_plt, tuple(plt_sz.astype(int)), order='F')
     return curve_plt
 
 
@@ -530,8 +530,8 @@ def slra_fri_curve(G, a, K, L, K_alg, L_alg, B_x, B_y, tau_x, tau_y,
     mu = 0.1  # default parameter by the author. Must be in (0,2)
     gamma = 0.51 * mu  # default parameter by the author. Must be in (mu/2,1)
 
-    k_limit = np.floor(B_x * tau_x / 2.)
-    l_limit = np.floor(B_y * tau_y / 2.)
+    k_limit = np.int(np.floor(B_x * tau_x / 2.))
+    l_limit = np.int(np.floor(B_y * tau_y / 2.))
     k_grid, l_grid = np.meshgrid(np.arange(-k_limit, k_limit + 1),
                                  np.arange(-l_limit, l_limit + 1))
     k_grid = np.reshape(k_grid, (-1, 1), order='F')

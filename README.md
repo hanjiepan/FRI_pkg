@@ -30,7 +30,7 @@ Thanks to this new approach, we unify a variety of FRI based methods. We demonst
 Package Description
 -------------------
 
-This repository contains all the code to reproduce the results of the paper [*Towards Generalized FRI Sampling with an Application to Source Resolution in Radioastronomy*](http://lcav.epfl.ch). It contains a python implementation of the proposed algorithm.
+This repository contains all the code to reproduce the results of the paper [*Towards Generalized FRI Sampling with an Application to Source Resolution in Radioastronomy*](https://infoscience.epfl.ch/record/222498). It contains a python implementation of the proposed algorithm.
 
 A number of scripts were written to exemplify the application of the proposed *finite rate of innovation (FRI)* reconstruction algorithm on solving various FRI reconstruction problems, including
 

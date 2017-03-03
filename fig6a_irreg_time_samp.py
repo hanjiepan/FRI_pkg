@@ -54,7 +54,7 @@ if __name__ == '__main__':
         tk = np.sort(np.hstack((np.random.rand() * tk[0] / 2., tk)) + (1 - tk[-1]) / 2.) * tau
 
         # save Dirac parameter
-        time_stamp = datetime.datetime.now().strftime("%-d-%-m_%H_%M")
+        time_stamp = datetime.datetime.now().strftime("%d-%m_%H_%M")
         file_name = './data/Dirac_Data_' + time_stamp + '.npz'
         np.savez(file_name, tk=tk, ak=ak, K=K, time_stamp=time_stamp)
 

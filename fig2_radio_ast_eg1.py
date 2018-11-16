@@ -160,8 +160,7 @@ if __name__ == '__main__':
             plt.xlim([-tau1 / 2., tau1 / 2.])
             plt.ylim([-tau2 / 2., tau2 / 2.])
 
-            subplt22_13_2 = plt.plot(xk_recon, yk_recon, hold=True,
-                                     label='Estimated Diracs')
+            subplt22_13_2 = plt.plot(xk_recon, yk_recon, label='Estimated Diracs')
             plt.setp(subplt22_13_2, linewidth=1.5,
                      color=[0.850, 0.325, 0.098], linestyle='None',
                      marker='*', markersize=10, markerfacecolor=[0.850, 0.325, 0.098],

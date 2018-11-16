@@ -11,9 +11,9 @@ else:
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
 
-import bokeh.plotting as b_plt
-from bokeh.io import vplot, hplot, output_file, show
-from bokeh.models.tools import WheelZoomTool
+# import bokeh.plotting as b_plt
+# from bokeh.io import vplot, hplot, output_file, show
+# from bokeh.models.tools import WheelZoomTool
 
 from alg_tools_1d import distance, build_G_fourier, dirac_recon_irreg_fourier
 
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     plt.setp(baseline311_1, linewidth=0)
 
     markerline311_2, stemlines311_2, baseline311_2 = \
-        plt.stem(tk_ref, ak_recon, label='Estimated Diracs', hold=True)
+        plt.stem(tk_ref, ak_recon, label='Estimated Diracs', )
     plt.setp(stemlines311_2, linewidth=1.5, color=[0.850, 0.325, 0.098])
     plt.setp(markerline311_2, marker='*', linewidth=1.5, markersize=10,
              markerfacecolor=[0.850, 0.325, 0.098], mec=[0.850, 0.325, 0.098])
@@ -162,10 +162,10 @@ if __name__ == '__main__':
     line312_1 = ax2.plot(omega_ell, np.real(Xomega_ell_noisy), label='Measurements')
     plt.setp(line312_1, marker='.', linestyle='None', markersize=5, color=[0, 0.447, 0.741])
 
-    line312_2 = plt.plot(omega_continuous, np.real(Xomegas_conti), hold=True, label='Ground Truth')
+    line312_2 = plt.plot(omega_continuous, np.real(Xomegas_conti), label='Ground Truth')
     plt.setp(line312_2, linestyle='-', color=[0.850, 0.325, 0.098], linewidth=1)
 
-    line312_3 = plt.plot(omega_continuous, np.real(Xomegas_conti_recon), hold=True, label='Reconstruction')
+    line312_3 = plt.plot(omega_continuous, np.real(Xomegas_conti_recon), label='Reconstruction')
     plt.setp(line312_3, linestyle='--', color=[0.466, 0.674, 0.188], linewidth=1.5)
     plt.ylim([1.1 * np.min(np.concatenate((np.real(Xomegas_conti), np.real(Xomega_ell_noisy)))),
               1.1 * np.max(np.concatenate((np.real(Xomegas_conti), np.real(Xomega_ell_noisy))))])
@@ -178,10 +178,10 @@ if __name__ == '__main__':
     line313_1 = ax3.plot(omega_ell, np.imag(Xomega_ell_noisy), label='Measurements')
     plt.setp(line313_1, marker='.', linestyle='None', markersize=5, color=[0, 0.447, 0.741])
 
-    line313_2 = plt.plot(omega_continuous, np.imag(Xomegas_conti), hold=True, label='Ground Truth')
+    line313_2 = plt.plot(omega_continuous, np.imag(Xomegas_conti), label='Ground Truth')
     plt.setp(line313_2, linestyle='-', color=[0.850, 0.325, 0.098], linewidth=1)
 
-    line313_3 = plt.plot(omega_continuous, np.imag(Xomegas_conti_recon), hold=True, label='Reconstruction')
+    line313_3 = plt.plot(omega_continuous, np.imag(Xomegas_conti_recon), label='Reconstruction')
     plt.setp(line313_3, linestyle='--', color=[0.466, 0.674, 0.188], linewidth=1.5)
     plt.ylim([1.1 * np.min(np.concatenate((np.imag(Xomegas_conti), np.imag(Xomega_ell_noisy)))),
               1.1 * np.max(np.concatenate((np.imag(Xomegas_conti), np.imag(Xomega_ell_noisy))))])
@@ -203,121 +203,121 @@ if __name__ == '__main__':
     plt.show()
 
     # for web rendering
-    if web_fig:
-        output_file('./html/eg2.html')
-        TOOLS = 'pan, reset'
-        p_hdl1 = b_plt.figure(title='K={0}, L={1}, SNR={2:.1f}dB, error={3:.2e}'.format(repr(K), repr(L), P, t_error),
-                              tools=TOOLS,
-                              x_axis_label='time', y_axis_label='amplitudes',
-                              plot_width=550, plot_height=220,
-                              x_range=(-0.5 * tau, 0.5 * tau),
-                              y_range=(1.18 * np.min(np.concatenate((ak, ak_recon, np.array(0)[np.newaxis]))),
-                                       1.18 * np.max(np.concatenate((ak, ak_recon, np.array(0)[np.newaxis])))
-                                       )
-                              )
-        p_hdl1.title.text_font_size = '12pt'
-        p_hdl1.add_tools(WheelZoomTool(dimensions=["width"]))
-        p_hdl1.triangle(x=tk, y=ak,
-                        color='#0072BD',
-                        fill_color='#0072BD',
-                        line_width=1.5, size=8,
-                        legend='Original Diracs')
-        p_hdl1.multi_line(xs=np.vstack((tk, tk)).T.tolist(),
-                          ys=np.vstack((np.zeros(ak.shape), ak)).T.tolist(),
-                          color='#0072BD',
-                          line_width=1.5,
-                          line_color='#0072BD')
-        p_hdl1.diamond(x=tk_ref, y=ak_recon,
-                       color='#D95319',
-                       line_width=1.5, size=10,
-                       legend='Estimated Diracs')
-        p_hdl1.multi_line(xs=np.vstack((tk_ref, tk_ref)).T.tolist(),
-                          ys=np.vstack((np.zeros(ak_recon.shape), ak_recon)).T.tolist(),
-                          color='#D95319',
-                          line_width=1.5,
-                          line_color='#D95319')
-        p_hdl1.legend.location = 'bottom_right'
-        p_hdl1.legend.border_line_alpha = 0.6
-        p_hdl1.xaxis.axis_label_text_font_size = "11pt"
-        p_hdl1.yaxis.axis_label_text_font_size = "11pt"
-        p_hdl1.legend.legend_spacing = 1
-        p_hdl1.legend.legend_padding = 5
-        p_hdl1.legend.label_text_font_size = "9pt"
-
-        # subplot 2
-        TOOLS2 = 'pan, reset'
-        p_hdl2 = b_plt.figure(tools=TOOLS2, x_axis_label='omega',
-                              y_axis_label='Spectrum (Real)',
-                              plot_width=550, plot_height=220,
-                              y_range=(1.1 * np.min(np.concatenate((np.real(Xomegas_conti),
-                                                                    np.real(Xomega_ell_noisy)))
-                                                    ),
-                                       1.1 * np.max(np.concatenate((np.real(Xomegas_conti),
-                                                                    np.real(Xomega_ell_noisy)))
-                                                    )
-                                       )
-                              )
-        p_hdl2.add_tools(WheelZoomTool())
-        p_hdl2.line(x=omega_continuous, y=np.real(Xomegas_conti),
-                    color='#D95319',
-                    line_color='#D95319',
-                    line_width=1.5,
-                    legend='Ground Truth')
-        p_hdl2.line(x=omega_continuous, y=np.real(Xomegas_conti_recon),
-                    color='#77AC30',
-                    line_color='#77AC30',
-                    line_width=1.5,
-                    legend='Reconstruction')
-        p_hdl2.circle(x=omega_ell, y=np.real(Xomega_ell_noisy),
-                      color='#0072BD',
-                      fill_color='#0072BD',
-                      line_width=1.5, size=2,
-                      legend='Measurements')
-        p_hdl2.xaxis.axis_label_text_font_size = "11pt"
-        p_hdl2.yaxis.axis_label_text_font_size = "10pt"
-        p_hdl2.legend.location = 'bottom_right'
-        p_hdl2.legend.border_line_alpha = 0.6
-        p_hdl2.legend.legend_spacing = 1
-        p_hdl2.legend.legend_padding = 5
-        p_hdl2.legend.label_text_font_size = "8pt"
-
-        # subplot 3
-        TOOLS3 = 'pan, reset'
-        p_hdl3 = b_plt.figure(tools=TOOLS3, x_axis_label='omega',
-                              y_axis_label='Spectrum (Imaginary)',
-                              plot_width=550, plot_height=220,
-                              x_range=p_hdl2.x_range,
-                              y_range=(1.1 * np.min(np.concatenate((np.imag(Xomegas_conti),
-                                                                    np.imag(Xomega_ell_noisy)))
-                                                    ),
-                                       1.1 * np.max(np.concatenate((np.imag(Xomegas_conti),
-                                                                    np.imag(Xomega_ell_noisy)))
-                                                    )
-                                       )
-                              )
-        p_hdl3.add_tools(WheelZoomTool())
-        p_hdl3.line(x=omega_continuous, y=np.imag(Xomegas_conti),
-                    color='#D95319',
-                    line_color='#D95319',
-                    line_width=1.5,
-                    legend='Ground Truth')
-        p_hdl3.line(x=omega_continuous, y=np.imag(Xomegas_conti_recon),
-                    color='#77AC30',
-                    line_color='#77AC30',
-                    line_width=1.5,
-                    legend='Reconstruction')
-        p_hdl3.circle(x=omega_ell, y=np.imag(Xomega_ell_noisy),
-                      color='#0072BD',
-                      fill_color='#0072BD',
-                      line_width=1.5, size=2,
-                      legend='Measurements')
-        p_hdl3.xaxis.axis_label_text_font_size = "11pt"
-        p_hdl3.yaxis.axis_label_text_font_size = "10pt"
-        p_hdl3.legend.location = 'bottom_right'
-        p_hdl3.legend.border_line_alpha = 0.6
-        p_hdl3.legend.legend_spacing = 1
-        p_hdl3.legend.legend_padding = 5
-        p_hdl3.legend.label_text_font_size = "8pt"
-
-        p_hdl = b_plt.gridplot([[p_hdl1], [p_hdl2], [p_hdl3]], toolbar_location='above')
-        show(p_hdl)
+    # if web_fig:
+    #     output_file('./html/eg2.html')
+    #     TOOLS = 'pan, reset'
+    #     p_hdl1 = b_plt.figure(title='K={0}, L={1}, SNR={2:.1f}dB, error={3:.2e}'.format(repr(K), repr(L), P, t_error),
+    #                           tools=TOOLS,
+    #                           x_axis_label='time', y_axis_label='amplitudes',
+    #                           plot_width=550, plot_height=220,
+    #                           x_range=(-0.5 * tau, 0.5 * tau),
+    #                           y_range=(1.18 * np.min(np.concatenate((ak, ak_recon, np.array(0)[np.newaxis]))),
+    #                                    1.18 * np.max(np.concatenate((ak, ak_recon, np.array(0)[np.newaxis])))
+    #                                    )
+    #                           )
+    #     p_hdl1.title.text_font_size = '12pt'
+    #     p_hdl1.add_tools(WheelZoomTool(dimensions=["width"]))
+    #     p_hdl1.triangle(x=tk, y=ak,
+    #                     color='#0072BD',
+    #                     fill_color='#0072BD',
+    #                     line_width=1.5, size=8,
+    #                     legend='Original Diracs')
+    #     p_hdl1.multi_line(xs=np.vstack((tk, tk)).T.tolist(),
+    #                       ys=np.vstack((np.zeros(ak.shape), ak)).T.tolist(),
+    #                       color='#0072BD',
+    #                       line_width=1.5,
+    #                       line_color='#0072BD')
+    #     p_hdl1.diamond(x=tk_ref, y=ak_recon,
+    #                    color='#D95319',
+    #                    line_width=1.5, size=10,
+    #                    legend='Estimated Diracs')
+    #     p_hdl1.multi_line(xs=np.vstack((tk_ref, tk_ref)).T.tolist(),
+    #                       ys=np.vstack((np.zeros(ak_recon.shape), ak_recon)).T.tolist(),
+    #                       color='#D95319',
+    #                       line_width=1.5,
+    #                       line_color='#D95319')
+    #     p_hdl1.legend.location = 'bottom_right'
+    #     p_hdl1.legend.border_line_alpha = 0.6
+    #     p_hdl1.xaxis.axis_label_text_font_size = "11pt"
+    #     p_hdl1.yaxis.axis_label_text_font_size = "11pt"
+    #     p_hdl1.legend.legend_spacing = 1
+    #     p_hdl1.legend.legend_padding = 5
+    #     p_hdl1.legend.label_text_font_size = "9pt"
+    #
+    #     # subplot 2
+    #     TOOLS2 = 'pan, reset'
+    #     p_hdl2 = b_plt.figure(tools=TOOLS2, x_axis_label='omega',
+    #                           y_axis_label='Spectrum (Real)',
+    #                           plot_width=550, plot_height=220,
+    #                           y_range=(1.1 * np.min(np.concatenate((np.real(Xomegas_conti),
+    #                                                                 np.real(Xomega_ell_noisy)))
+    #                                                 ),
+    #                                    1.1 * np.max(np.concatenate((np.real(Xomegas_conti),
+    #                                                                 np.real(Xomega_ell_noisy)))
+    #                                                 )
+    #                                    )
+    #                           )
+    #     p_hdl2.add_tools(WheelZoomTool())
+    #     p_hdl2.line(x=omega_continuous, y=np.real(Xomegas_conti),
+    #                 color='#D95319',
+    #                 line_color='#D95319',
+    #                 line_width=1.5,
+    #                 legend='Ground Truth')
+    #     p_hdl2.line(x=omega_continuous, y=np.real(Xomegas_conti_recon),
+    #                 color='#77AC30',
+    #                 line_color='#77AC30',
+    #                 line_width=1.5,
+    #                 legend='Reconstruction')
+    #     p_hdl2.circle(x=omega_ell, y=np.real(Xomega_ell_noisy),
+    #                   color='#0072BD',
+    #                   fill_color='#0072BD',
+    #                   line_width=1.5, size=2,
+    #                   legend='Measurements')
+    #     p_hdl2.xaxis.axis_label_text_font_size = "11pt"
+    #     p_hdl2.yaxis.axis_label_text_font_size = "10pt"
+    #     p_hdl2.legend.location = 'bottom_right'
+    #     p_hdl2.legend.border_line_alpha = 0.6
+    #     p_hdl2.legend.legend_spacing = 1
+    #     p_hdl2.legend.legend_padding = 5
+    #     p_hdl2.legend.label_text_font_size = "8pt"
+    #
+    #     # subplot 3
+    #     TOOLS3 = 'pan, reset'
+    #     p_hdl3 = b_plt.figure(tools=TOOLS3, x_axis_label='omega',
+    #                           y_axis_label='Spectrum (Imaginary)',
+    #                           plot_width=550, plot_height=220,
+    #                           x_range=p_hdl2.x_range,
+    #                           y_range=(1.1 * np.min(np.concatenate((np.imag(Xomegas_conti),
+    #                                                                 np.imag(Xomega_ell_noisy)))
+    #                                                 ),
+    #                                    1.1 * np.max(np.concatenate((np.imag(Xomegas_conti),
+    #                                                                 np.imag(Xomega_ell_noisy)))
+    #                                                 )
+    #                                    )
+    #                           )
+    #     p_hdl3.add_tools(WheelZoomTool())
+    #     p_hdl3.line(x=omega_continuous, y=np.imag(Xomegas_conti),
+    #                 color='#D95319',
+    #                 line_color='#D95319',
+    #                 line_width=1.5,
+    #                 legend='Ground Truth')
+    #     p_hdl3.line(x=omega_continuous, y=np.imag(Xomegas_conti_recon),
+    #                 color='#77AC30',
+    #                 line_color='#77AC30',
+    #                 line_width=1.5,
+    #                 legend='Reconstruction')
+    #     p_hdl3.circle(x=omega_ell, y=np.imag(Xomega_ell_noisy),
+    #                   color='#0072BD',
+    #                   fill_color='#0072BD',
+    #                   line_width=1.5, size=2,
+    #                   legend='Measurements')
+    #     p_hdl3.xaxis.axis_label_text_font_size = "11pt"
+    #     p_hdl3.yaxis.axis_label_text_font_size = "10pt"
+    #     p_hdl3.legend.location = 'bottom_right'
+    #     p_hdl3.legend.border_line_alpha = 0.6
+    #     p_hdl3.legend.legend_spacing = 1
+    #     p_hdl3.legend.legend_padding = 5
+    #     p_hdl3.legend.label_text_font_size = "8pt"
+    #
+    #     p_hdl = b_plt.gridplot([[p_hdl1], [p_hdl2], [p_hdl3]], toolbar_location='above')
+    #     show(p_hdl)

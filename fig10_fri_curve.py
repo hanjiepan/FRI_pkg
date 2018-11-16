@@ -11,8 +11,8 @@ else:
 from matplotlib import rcParams
 import matplotlib.pyplot as plt
 
-import bokeh.plotting as b_plt
-from bokeh.io import vplot, hplot, output_file, show
+# import bokeh.plotting as b_plt
+# from bokeh.io import vplot, hplot, output_file, show
 
 from alg_tools_2d import gen_samples_edge_img, build_G_fri_curve, snr_normalised, \
     std_normalised, cadzow_iter_fri_curve, slra_fri_curve,\
@@ -184,69 +184,69 @@ if __name__ == '__main__':
                             file_format=fig_format)
     plt.show()
 
-    if web_fig:
-        output_file('./html/eg3.html')
-        TOOLS = 'pan, wheel_zoom, reset'
-        p_hdl1 = b_plt.figure(title=r'Noisy Samples (SNR = {:.1f}dB)'.format(P),
-                              tools=TOOLS,
-                              plot_width=320, plot_height=320,
-                              x_range=(0, samples_size[1]),
-                              y_range=(0, samples_size[0])
-                              )
-        p_hdl1.title.text_font_size['value'] = '12pt'
-        p_hdl1.image(image=[samples_noisy], x=[0], y=[0],
-                     dw=[samples_size[1]], dh=[samples_size[0]],
-                     palette='Greys9')
-        p_hdl1.axis.visible = None
-
-        p_hdl2 = b_plt.figure(title=r'Cadzow''s Method',
-                              tools=TOOLS,
-                              plot_width=320, plot_height=320,
-                              x_range=(0, plt_size[1]),
-                              y_range=(0, plt_size[0])
-                              )
-        p_hdl2.title.text_font_size['value'] = '12pt'
-        p_hdl2.image(image=[curve_recon_cad], x=[0], y=[0],
-                     dw=[plt_size[1]], dh=[plt_size[0]],
-                     palette='Greys9')
-        p_hdl2.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
-                      color='#D95319',
-                      fill_color='#D95319',
-                      line_width=1, size=1)
-        p_hdl2.axis.visible = None
-
-        p_hdl3 = b_plt.figure(title=r'SLRA Method',
-                              tools=TOOLS,
-                              plot_width=320, plot_height=320,
-                              x_range=(0, plt_size[1]),
-                              y_range=(0, plt_size[0])
-                              )
-        p_hdl3.title.text_font_size['value'] = '12pt'
-        p_hdl3.image(image=[curve_recon_slra], x=[0], y=[0],
-                     dw=[plt_size[1]], dh=[plt_size[0]],
-                     palette='Greys9')
-        p_hdl3.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
-                      color='#D95319',
-                      fill_color='#D95319',
-                      line_width=1, size=1)
-        p_hdl3.axis.visible = None
-
-        p_hdl4 = b_plt.figure(title=r'Proposed',
-                              tools=TOOLS,
-                              plot_width=320, plot_height=320,
-                              x_range=p_hdl2.x_range,
-                              y_range=p_hdl2.y_range
-                              )
-        p_hdl4.title.text_font_size['value'] = '12pt'
-        p_hdl4.image(image=[curve_recon_proposed], x=[0], y=[0],
-                     dw=[plt_size[1]], dh=[plt_size[0]],
-                     palette='Greys9')
-        p_hdl4.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
-                      color='#D95319',
-                      fill_color='#D95319',
-                      line_width=1, size=1)
-        p_hdl4.axis.visible = None
-
-        p_hdl = b_plt.gridplot([[p_hdl1, p_hdl2, p_hdl3, p_hdl4]],
-                               toolbar_location='above')
-        show(p_hdl)
+    # if web_fig:
+    #     output_file('./html/eg3.html')
+    #     TOOLS = 'pan, wheel_zoom, reset'
+    #     p_hdl1 = b_plt.figure(title=r'Noisy Samples (SNR = {:.1f}dB)'.format(P),
+    #                           tools=TOOLS,
+    #                           plot_width=320, plot_height=320,
+    #                           x_range=(0, samples_size[1]),
+    #                           y_range=(0, samples_size[0])
+    #                           )
+    #     p_hdl1.title.text_font_size['value'] = '12pt'
+    #     p_hdl1.image(image=[samples_noisy], x=[0], y=[0],
+    #                  dw=[samples_size[1]], dh=[samples_size[0]],
+    #                  palette='Greys9')
+    #     p_hdl1.axis.visible = None
+    #
+    #     p_hdl2 = b_plt.figure(title=r'Cadzow''s Method',
+    #                           tools=TOOLS,
+    #                           plot_width=320, plot_height=320,
+    #                           x_range=(0, plt_size[1]),
+    #                           y_range=(0, plt_size[0])
+    #                           )
+    #     p_hdl2.title.text_font_size['value'] = '12pt'
+    #     p_hdl2.image(image=[curve_recon_cad], x=[0], y=[0],
+    #                  dw=[plt_size[1]], dh=[plt_size[0]],
+    #                  palette='Greys9')
+    #     p_hdl2.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
+    #                   color='#D95319',
+    #                   fill_color='#D95319',
+    #                   line_width=1, size=1)
+    #     p_hdl2.axis.visible = None
+    #
+    #     p_hdl3 = b_plt.figure(title=r'SLRA Method',
+    #                           tools=TOOLS,
+    #                           plot_width=320, plot_height=320,
+    #                           x_range=(0, plt_size[1]),
+    #                           y_range=(0, plt_size[0])
+    #                           )
+    #     p_hdl3.title.text_font_size['value'] = '12pt'
+    #     p_hdl3.image(image=[curve_recon_slra], x=[0], y=[0],
+    #                  dw=[plt_size[1]], dh=[plt_size[0]],
+    #                  palette='Greys9')
+    #     p_hdl3.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
+    #                   color='#D95319',
+    #                   fill_color='#D95319',
+    #                   line_width=1, size=1)
+    #     p_hdl3.axis.visible = None
+    #
+    #     p_hdl4 = b_plt.figure(title=r'Proposed',
+    #                           tools=TOOLS,
+    #                           plot_width=320, plot_height=320,
+    #                           x_range=p_hdl2.x_range,
+    #                           y_range=p_hdl2.y_range
+    #                           )
+    #     p_hdl4.title.text_font_size['value'] = '12pt'
+    #     p_hdl4.image(image=[curve_recon_proposed], x=[0], y=[0],
+    #                  dw=[plt_size[1]], dh=[plt_size[0]],
+    #                  palette='Greys9')
+    #     p_hdl4.circle(x=idx_x[subset_idx], y=idx_y[subset_idx],
+    #                   color='#D95319',
+    #                   fill_color='#D95319',
+    #                   line_width=1, size=1)
+    #     p_hdl4.axis.visible = None
+    #
+    #     p_hdl = b_plt.gridplot([[p_hdl1, p_hdl2, p_hdl3, p_hdl4]],
+    #                            toolbar_location='above')
+    #     show(p_hdl)

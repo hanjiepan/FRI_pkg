@@ -227,11 +227,11 @@ if __name__ == '__main__':
     #                       color='#0072BD',
     #                       line_width=1.5,
     #                       line_color='#0072BD')
-    #     p_hdl1.diamond(x=tk_ref, y=ak_recon,
+    #     p_hdl1.diamond(x=tk_recon, y=ak_recon,
     #                    color='#D95319',
     #                    line_width=1.5, size=10,
     #                    legend='Estimated Diracs')
-    #     p_hdl1.multi_line(xs=np.vstack((tk_ref, tk_ref)).T.tolist(),
+    #     p_hdl1.multi_line(xs=np.vstack((tk_recon, tk_recon)).T.tolist(),
     #                       ys=np.vstack((np.zeros(ak_recon.shape), ak_recon)).T.tolist(),
     #                       color='#D95319',
     #                       line_width=1.5,

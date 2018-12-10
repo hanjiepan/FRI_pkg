@@ -8,7 +8,7 @@
   </equation*>
 
   <\equation*>
-    sinc<around*|(|t|)>=<frac|sin<around*|(|t|)>|t>
+    sinc<around*|(|t|)>=<frac|sin<around*|(|t|)>|t><space|1em>\<leftrightarrow\><space|1em>\<pi\>rect<around*|(|\<omega\>/2|)>
   </equation*>
 
   <\eqnarray*>

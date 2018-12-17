@@ -5,8 +5,8 @@ import os
 from matplotlib import rcParams
 
 # for latex rendering
-os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + ':/opt/local/bin' + ':/Library/TeX/texbin/'
-rcParams['text.usetex'] = True
+#  os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + ':/opt/local/bin' + ':/Library/TeX/texbin/'
+#  rcParams['text.usetex'] = True
 # rcParams['text.latex.unicode'] = True
 
 

@@ -11,7 +11,7 @@ from scipy.ndimage.morphology import generate_binary_structure, binary_erosion
 from functools import partial
 from joblib import Parallel, delayed, cpu_count
 import os
-from matplotlib import rcParams
+# from matplotlib import rcParams
 import matplotlib.pyplot as plt
 from alg_tools_1d import distance
 
@@ -22,10 +22,10 @@ except ImportError:
     use_mkl_fft = False
 
 # for latex rendering
-os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + \
-                     ':/opt/local/bin' + ':/Library/TeX/texbin/'
-rcParams['text.usetex'] = True
-rcParams['text.latex.unicode'] = True
+# os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + \
+#                      ':/opt/local/bin' + ':/Library/TeX/texbin/'
+# rcParams['text.usetex'] = True
+# rcParams['text.latex.unicode'] = True
 
 
 def distance_2d(x, y, x_ref, y_ref):

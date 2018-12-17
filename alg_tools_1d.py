@@ -5,9 +5,9 @@ import os
 from matplotlib import rcParams
 
 # for latex rendering
-os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + ':/opt/local/bin' + ':/Library/TeX/texbin/'
-rcParams['text.usetex'] = True
-rcParams['text.latex.unicode'] = True
+# os.environ['PATH'] = os.environ['PATH'] + ':/usr/texbin' + ':/opt/local/bin' + ':/Library/TeX/texbin/'
+# rcParams['text.usetex'] = True
+# rcParams['text.latex.unicode'] = True
 
 
 def distance(x1, x2):
@@ -137,9 +137,9 @@ def build_G_fourier(omega_ell, M, tau, interp_kernel, **kwargs):
         Phi_inter = keysInter(omegas / (2 * np.pi / tau) - m_grid)
     else:
         Phi_inter = periodicSinc((tau * omegas - 2 * np.pi * m_grid) / 2., M * tau)
-    if 'tk_ref' in kwargs:
-        tk_ref = kwargs['tk_ref']
-        # now the part that is build based on tk_ref
+    if 'tk_recon' in kwargs:
+        tk_ref = kwargs['tk_recon']
+        # now the part that is build based on tk_recon
         tks_grid, m_uni_grid = np.meshgrid(tk_ref, np.arange(-m_limit, m_limit + 1))
         B_ref = np.exp(-1j * 2 * np.pi / tau * m_uni_grid * tks_grid)
         W_ref = linalg.solve(np.dot(B_ref.conj().T, B_ref), B_ref.conj().T)
@@ -153,7 +153,7 @@ def build_G_fourier(omega_ell, M, tau, interp_kernel, **kwargs):
     return G
 
 
-def dirac_recon_time(G, a, K, noise_level, max_ini=100, stop_cri='mse'):
+def dirac_recon_time(G, a, K, noise_level=0, max_ini=100, stop_cri='mse'):
     compute_mse = (stop_cri == 'mse')
     M = G.shape[1]
     GtG = np.dot(G.conj().T, G)
@@ -223,7 +223,7 @@ def dirac_recon_time(G, a, K, noise_level, max_ini=100, stop_cri='mse'):
     return b_opt, min_error, c_opt, ini
 
 
-def dirac_recon_irreg_fourier(FourierData, K, tau, omega_ell, M, noise_level,
+def dirac_recon_irreg_fourier(FourierData, K, tau, omega_ell, M, noise_level=0,
                               max_ini=100, stop_cri='mse', interp_kernel='dirichlet',
                               update_G=False):
     # whether to update the linear transformation matrix G

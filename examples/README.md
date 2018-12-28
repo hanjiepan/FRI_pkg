@@ -8,8 +8,6 @@ Overview
 
 - dirac_time_nonuniform.ipynb: Recover a signal in the form of a periodic stream of Diracs from non-uniformly spaced time samples (see Figure 6 in paper).
 
-- dirac_fourier_nouniform.ipynb: Recover a signal consisting of K Diracs from non-uniformly spaced Fourier domain samples (see Figure 8 in paper). 
-
 Run remotely
 ------------
 
